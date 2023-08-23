@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<Container version="2">
+    <Name>cockroachdb</Name>
+    <Registry>https://hub.docker.com/r/cockroachdb/</Registry>
+    <Repository>cockroachdb/cockroach</Repository>
+    <Github>https://github.com/divios/Unraid_templates</Github>
+    <Network>bridge</Network>
+    <MyIP/>
+    <Privileged>false</Privileged>
+    <Support>https://github.com/divios/Unraid_templates</Support>
+    <Project/>
+    <Overview>
+        Cockroach db instance.
+    </Overview>
+    <Category>HomeAutomation:</Category>
+    <WebUI>http://[IP]:[PORT:8080]</WebUI>
+    <TemplateURL/>
+    <Icon>https://raw.githubusercontent.com/sebastienvermeille/unraid-docker-templates/main/images/mycroft_icon.png</Icon>
+    <ExtraParams/>
+    <PostArgs/>
+    <DateInstalled>1527397055</DateInstalled>
+    <DonateText/>
+    <DonateLink/>
+    <DonateImg/>
+    <MinVer/>
+    <Description>
+        Tools like Amazon™ Alexa™, Google Assistant™, Microsoft Cortana™ or Apple's Siri™ are black boxes. That is, you can't look inside them, and see what they do - or importantly - how they do it. And while they may allow you some flexibility to create new Skills, these are usually strictly controlled. Mycroft gives you freedom, flexibility and control over how your want your voice assistant to work. Mycroft is AI for everyone.
+    </Description>
+    <Networking>
+        <Mode>bridge</Mode>
+        <Publish>
+            <Port>
+                <HostPort>26257</HostPort>
+                <ContainerPort>26257</ContainerPort>
+                <Protocol>tcp</Protocol>
+            </Port>
+            <Port>
+                <HostPort>8080</HostPort>
+                <ContainerPort>8080</ContainerPort>
+                <Protocol>tcp</Protocol>
+            </Port>
+        </Publish>
+    </Networking>
+    <Data>
+        <Volume>
+            <HostDir>/mnt/user/appdata/cockroach/</HostDir>
+            <ContainerDir>/cockroach/cockroach-data</ContainerDir>
+            <Mode>rw</Mode>
+        </Volume>
+    </Data>
+    <Environment>
+        <Variable Name="PGID" Value="100"/>
+        <Variable Name="PUID" Value="99"/>
+    </Environment>
+    <Labels/>
+    <Config Name="db Port" Target="26257" Default="26257" Mode="tcp" Description="Container Port: 26257" Type="Port" Display="always"
+            Required="true" Mask="false">26257</Config>
+    <Config Name="Host Port" Target="8080" Default="8080" Mode="tcp" Description="Container Port: 8080" Type="Port" Display="always"
+            Required="true" Mask="false">8080</Config>
+    <Config Name="AppData Config Path" Target="/config" Default="/mnt/user/appdata/cockroach/" Mode="rw"
+            Description="Container Path: /cockroach/cockroach-data"
+            Type="Path" Display="advanced-hide" Required="true" Mask="false">/mnt/user/appdata/cockroach/</Config>
+</Container>
